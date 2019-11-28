@@ -1,0 +1,9 @@
+{
+    "tempambiente"      : 0,
+    "templiquido"       : 0,
+    "nivelreservatorio" : 0,
+    "phliquido"         : 0,
+    "luminosidade"      : 0,
+    "conduteletrica"    : 0,
+    "vazaoliquido"      : 0
+}
