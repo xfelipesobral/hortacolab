@@ -1,5 +1,9 @@
 <?php
 
+    header('Content-Type: application/json');
+    $json = file_get_contents('php://input');
+    $json = json_decode($json);
+
     require_once "../model/Sensoreamento.php";
 
     function registrar($tempambiente, $templiquido, $nivelreservatorio, $phliquido, $luminosidade, $conduteletrica, $vazaoliquido){
@@ -24,36 +28,29 @@
 
     }
 
-    // ** TRATA POST
+    if(isset($json)){
 
-    if(isset($_POST)){
+        if (isset($json->JSON_DATA_HORTACOLAB)) {
 
-        if (isset($_POST['JSON_DATA_HORTACOLAB'])) {
+            $data = $json->JSON_DATA_HORTACOLAB;
+            $count = count($data);
 
-            $data = json_decode($_POST['JSON_DATA_HORTACOLAB']);
+            $retorno = registrar($data->tempambiente, 
+                                 $data->templiquido,
+                                 $data->nivelreservatorio,
+                                 $data->phliquido,
+                                 $data->luminosidade,
+                                 $data->conduteletrica,
+                                 $data->vazaoliquido);
 
-            if(count($data) == 7){
-                
-                $retorno = registrar($data->tempambiente, 
-                                     $data->templiquido,
-                                     $data->nivelreservatorio,
-                                     $data->phliquido,
-                                     $data->luminosidade,
-                                     $data->conduteletrica,
-                                     $data->vazaoliquido);
-
-                $retorno = $retorno ? ["OK"] : ["FAIL"]; 
-
-            } else {
-                $retorno = ["FAIL"];
-            }
+            $retorno = $retorno ? ["STATUS" => "OK"] : ["STATUS" => "FAIL"]; 
 
         } else {
-            $retorno = ["FAIL"];
+            $retorno = ["STATUS" => "FAIL"];
         }
 
     } else {
-        $retorno = ["FAIL"];
+        $retorno = ["STATUS" => "FAIL"];
     }
 
     echo json_encode($retorno);

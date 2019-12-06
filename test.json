@@ -1,9 +1,22 @@
+// CONTROLLER SENSOREAMENTO
 {
-    "tempambiente"      : 0,
-    "templiquido"       : 0,
-    "nivelreservatorio" : 0,
-    "phliquido"         : 0,
-    "luminosidade"      : 0,
-    "conduteletrica"    : 0,
-    "vazaoliquido"      : 0
+	"JSON_DATA_HORTACOLAB": {
+			"tempambiente"      : 0,
+			"templiquido"       : 0,
+			"nivelreservatorio" : 0,
+			"phliquido"         : 0,
+			"luminosidade"      : 0,
+			"conduteletrica"    : 0,
+			"vazaoliquido"      : 0
+	}
+}
+
+// CONTROLLER CONTATO
+{
+	"JSON_DATA_HORTACOLAB": {
+			"nome"        : "Felipe",
+			"email"       : "xfelipesobral@gmail.com",
+			"telefone"    : "44998140644",
+			"descricao"   : "Primeiro usuário"
+	}
 }
